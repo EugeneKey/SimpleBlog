@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Delete post', do
+feature 'Delete post' do
 
   given(:post) { create(:post) }
 

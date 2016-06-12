@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
+gem 'bootstrap-sass'
+gem 'bootstrap-sass-extras'
+gem 'slim-rails'
+gem 'responders'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -50,4 +55,5 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'launchy'
+  gem 'capybara'
 end

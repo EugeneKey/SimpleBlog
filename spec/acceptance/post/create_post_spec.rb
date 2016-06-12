@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-feature 'Create post', do
+feature 'Create post' do
 
   given(:post) { create(:post) }
 
   scenario 'Create post with text' do
 
     visit root_path
-    click_link 'New'
+    click_link 'Create Post'
     fill_in 'Title', with: 'Test post'
     fill_in 'Body', with: 'Some text for post'
     click_button 'Create Post'

@@ -1,0 +1,8 @@
+header class="navbar navbar-fixed-top navbar-inverse"
+  .navbar-inner
+    .container
+      = link_to "SampleBlog", root_path, id: "logo"
+      nav
+        ul class="nav pull-right"
+          li= link_to "My Posts", posts_path
+          li= link_to "Create Post", new_post_path

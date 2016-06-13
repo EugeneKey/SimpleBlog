@@ -7,6 +7,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
 gem 'slim-rails'
 gem 'responders'
+gem 'devise'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'

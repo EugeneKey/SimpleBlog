@@ -22,9 +22,10 @@ h2 Comments
 .list-comments
   = render @post.comments
 
-div class="center hero-unit new-comment-form"
-  = form_for [@post, @comment], remote: true do |f|
-    = f.label :text, 'Your comment'
-    .comment-error
-    = f.text_area :body, class: "form-control", id: 'comment_create'
-    = f.submit 'Add comment', class: "btn btn-primary btn-lg btn-block"
+- if user_signed_in?
+  div class="center hero-unit new-comment-form"
+    = form_for [@post, @comment], remote: true do |f|
+      = f.label :text, 'Your comment'
+      .comment-error
+      = f.text_area :body, class: "form-control", id: 'comment_create'
+      = f.submit 'Add comment', class: "btn btn-primary btn-lg btn-block"

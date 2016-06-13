@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   respond_to :js
 
   def create
-    respond_with(@comment = @post.comments.create(comment_params))
+    respond_with(@comment = @post.comments.create(comment_params.merge(user: current_user)))
   end
 
   def update

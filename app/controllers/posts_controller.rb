@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :load_post, only: [:show, :edit, :update, :destroy]
   before_action :load_comments, :build_comment, only: :show
 
@@ -15,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    respond_with(@post = Post.create(post_params))
+    respond_with(@post = Post.create(post_params.merge(user: current_user)))
   end
 
   def edit

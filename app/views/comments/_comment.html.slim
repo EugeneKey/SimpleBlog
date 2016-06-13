@@ -1,0 +1,7 @@
+- if comment.persisted?
+  li= comment.body
+  div class="comment-options"
+    .form-group
+      = link_to t('.edit', default: t("helpers.links.edit")), edit_comment_path(comment), class: 'btn btn-default'
+      '
+      = link_to t('.destroy', default: t("helpers.links.destroy")), comment, method: "delete", class: 'btn btn-danger'

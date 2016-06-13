@@ -13,7 +13,7 @@ feature 'View the post and all comments to it', '
 
     expect(page).to have_content post.body
     comments.each do |c|
-      expect(page).to have_content c.text
+      expect(page).to have_content c.body
     end
   end
 end

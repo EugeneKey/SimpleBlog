@@ -1,0 +1,13 @@
+<% if @comment.errors.present? %>
+    <% @comment.errors.full_messages.each do |message| %>
+        $('.comment-error').html('<%= j message %>');
+    <% end %>
+<% else %>
+    $('.list-comments').append('<%= j render partial: 'comment', locals: {comment: @comment} %>');
+    $('#comment_create').val('');
+    $('.edit-comment-link').click(function(e) {
+        e.preventDefault();
+        comment_id = $(this).data('commentId');
+        $('form#edit-comment-' + comment_id).show();
+    });
+<% end %>

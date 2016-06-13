@@ -2,6 +2,9 @@ require 'rails_helper'
 RSpec.configure do |config|
   Capybara.javascript_driver = :webkit
 
+  config.include UserSignIn, type: :feature
+  config.include WaitForAjax, type: :feature
+
   config.use_transactional_fixtures = false
 
   config.before(:suite) do

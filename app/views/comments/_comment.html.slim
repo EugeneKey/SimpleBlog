@@ -2,10 +2,11 @@
   .comment id = "comment-#{comment.id}"
     .comment-body = comment.body
     .comment-options
-      .form-group
-        = link_to t('.edit', default: t("helpers.links.edit")), '', class: 'edit-comment-link btn btn-default', data: {comment_id: comment.id}
-        '
-        = link_to t('.destroy', default: t("helpers.links.destroy")), comment, method: "delete", remote: true, class: 'btn btn-danger'
+      - if user_signed_in? and comment.user_id == current_user.id
+        .form-group
+          = link_to t('.edit', default: t("helpers.links.edit")), '', class: 'edit-comment-link btn btn-default', data: {comment_id: comment.id}
+          '
+          = link_to t('.destroy', default: t("helpers.links.destroy")), comment, method: "delete", remote: true, class: 'btn btn-danger'
   = form_for [comment], remote: true, html: {id: "edit-comment-#{comment.id}"} do |f|
     = f.label :body, 'Edit your comment:'
     = f.text_area :body, class: "form-control"

@@ -1,0 +1,9 @@
+<% if @comment.errors.present? %>
+    <% @comment.errors.full_messages.each do |message| %>
+        $('.comment-error').html('<%= j message %>');
+    <% end %>
+<% else %>
+    $('#comment-<%= @comment.id %> .comment-body').html('<%= @comment.body %>');
+    $('form#edit-comment-<%= @comment.id %>').hide();
+    $('#comment-<%= @comment.id %>').show();
+<% end %>

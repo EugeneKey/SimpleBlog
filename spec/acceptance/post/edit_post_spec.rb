@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'acceptance/acceptance_helper'
 
 feature 'Post editing', '
   In order to fix mistake

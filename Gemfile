@@ -11,6 +11,7 @@ gem 'devise'
 gem 'pundit'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+gem 'acts-as-taggable-on'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'

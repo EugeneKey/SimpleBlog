@@ -13,7 +13,7 @@ feature 'Create post' do
     fill_in 'Body', with: 'Some text for post'
     click_button 'Create Post'
 
-    expect(page).to have_content 'Post was successfully created.'
+    expect(page).to have_content 'Post was successfully created. And successfully published.'
     expect(page).to have_content 'Some text for post'
     expect(current_path).to eq post_path(post.id - 1)
   end

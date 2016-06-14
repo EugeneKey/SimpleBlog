@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :load_comments, :build_comment, only: :show
 
   def index
-    respond_with(@posts = Post.all)
+    respond_with(@posts = Post.publishing)
   end
 
   def new
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :publish)
   end
 
   def load_comments
@@ -47,5 +47,13 @@ class PostsController < ApplicationController
 
   def build_comment
     @comment = @post.comments.build
+  end
+
+  def interpolation_options
+    if @post.publish
+      { unpublishing_post: 'And successfully published.' }
+    else
+      { unpublishing_post: 'But not publishing.' }
+    end
   end
 end

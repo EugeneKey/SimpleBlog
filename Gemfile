@@ -9,6 +9,8 @@ gem 'slim-rails'
 gem 'responders'
 gem 'devise'
 gem 'pundit'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'

@@ -2,9 +2,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :load_post, only: [:show, :edit, :update, :destroy]
   before_action :load_comments, :build_comment, only: :show
+  before_action :load_posts, only: [:index]
 
   def index
     respond_with(@posts = Post.publishing.paginate(page: params[:page], per_page: 5))
+  end
+
+  def index
+    respond_with @posts
   end
 
   def new
@@ -37,12 +42,20 @@ class PostsController < ApplicationController
 
   private
 
+  def load_posts
+    if params[:tag]
+      @posts = Post.publishing.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 5)
+    else
+      @posts = Post.publishing.paginate(page: params[:page], per_page: 5)
+    end
+  end
+
   def load_post
     @post = Post.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :publish)
+    params.require(:post).permit(:title, :body, :tag_list, :publish)
   end
 
   def load_comments

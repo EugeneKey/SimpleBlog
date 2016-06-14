@@ -3,14 +3,22 @@
     = f.label :title, class: 'control-label col-md-2'
     .col-md-10
       = f.text_field :title, class: 'text_field form-control'
+
   .form-group
     = f.label :body, class: 'control-label col-md-2'
     .col-md-10
       = f.text_field :body, class: 'text_field form-control'
+
+  .form-group
+    = f.label :tag_list, 'Tags (separated by commas)', class: 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :tag_list, class: 'text_field form-control'
+
   .form-group
     = f.label :publish, 'Publishing this post', class: 'control-label col-md-2'
     .col-md-10
       = f.check_box :publish, class: 'checkbox col-md-2'
+
   .form-group
     .col-md-offset-2.col-md-10
       = f.submit nil, class: 'btn btn-primary'

@@ -10,6 +10,8 @@ div class="page-header"
       dt.label.label-default= model_class.human_attribute_name(:body)
       dd
         pre.prettyprint= @post.body
+  .label.label-default= model_class.human_attribute_name(:tag_list)
+  p = raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 
 .form-group
   = link_to t('.back', default: t("helpers.links.back")), posts_path, class: 'btn btn-default'

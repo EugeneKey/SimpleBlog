@@ -7,3 +7,16 @@
   top: 20px;
   position: relative;
 }
+
+#tag_cloud {
+  a {
+      color: #555;
+      padding: 5pt;
+      &:hover {
+        color: #222;
+        }
+      }
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}

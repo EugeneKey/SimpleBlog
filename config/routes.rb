@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, shallow: true
   end
+
+  get :user_posts, to: 'posts#user_posts'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

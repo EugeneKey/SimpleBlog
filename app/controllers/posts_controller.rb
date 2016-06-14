@@ -31,6 +31,10 @@ class PostsController < ApplicationController
     respond_with(@post.destroy)
   end
 
+  def user_posts
+    respond_with(@posts = Post.user_posts(current_user))
+  end
+
   private
 
   def load_post

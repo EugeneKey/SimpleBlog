@@ -9,6 +9,7 @@ feature 'Comment editing', '
   given(:another_user) { create(:user) }
   given!(:post) { create(:post) }
   given!(:comment) { create(:comment, post: post, user: user) }
+  given!(:old_comment) { create(:old_comment, post: post, user: user) }
 
     describe 'Author' do
     before do
@@ -17,13 +18,13 @@ feature 'Comment editing', '
     end
 
     scenario 'sees link to edit his comment' do
-      within '.comment-options' do
+      within "#comment-#{comment.id}" do
         expect(page).to have_link 'Edit'
       end
     end
 
     scenario 'try to edit his comment', js: true do
-      within '.comment-options' do
+      within "#comment-#{comment.id}" do
         click_on 'Edit'
       end
       within '.edit_comment' do
@@ -36,13 +37,20 @@ feature 'Comment editing', '
         expect(page).to_not have_selector 'textarea'
       end
     end
+
+    scenario 'cannot sees link to edit his old comment' do
+      within "#comment-#{old_comment.id}" do
+        expect(page).to have_content old_comment.body
+        expect(page).to_not have_link 'Edit'
+      end
+    end
   end
 
   scenario "Authenticated user try to edit other user's comment" do
     sign_in another_user
     visit post_path(post)
 
-    within '.comment-options' do
+    within "#comment-#{comment.id}" do
       expect(page).to_not have_link 'Edit'
     end
   end
@@ -50,7 +58,7 @@ feature 'Comment editing', '
   scenario 'Non-authenticated user trying to edit answer' do
     visit post_path(post)
 
-    within '.comment-options' do
+    within "#comment-#{comment.id}" do
       expect(page).to_not have_link 'Edit'
     end
   end

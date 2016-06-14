@@ -2,7 +2,7 @@
   .comment id = "comment-#{comment.id}"
     .comment-body = comment.body
     .comment-options
-      - if user_signed_in? and comment.user_id == current_user.id
+      - if policy(comment).update?
         .form-group
           = link_to t('.edit', default: t("helpers.links.edit")), '', class: 'edit-comment-link btn btn-default', data: {comment_id: comment.id}
           '

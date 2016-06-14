@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
   def load_comment
     @comment = Comment.find(params[:id])
     @post = @comment.post
+    authorize @comment
   end
 
   def comment_params
